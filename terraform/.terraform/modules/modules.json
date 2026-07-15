@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"flink","Source":"./modules/flink","Dir":"modules/flink"},{"Key":"kafka","Source":"./modules/kafka","Dir":"modules/kafka"},{"Key":"minio","Source":"./modules/minio","Dir":"modules/minio"},{"Key":"trino","Source":"./modules/trino","Dir":"modules/trino"}]}
