@@ -4,11 +4,20 @@
 
 ## What is this Project?
 
+
+
+![terraform graph](/terraform/graph.svg)
+
 ## Pipeline Design
+
+
 
 ### Output
 
+
+
 ## How to Run
 
----
+
 ## Next Steps
+
