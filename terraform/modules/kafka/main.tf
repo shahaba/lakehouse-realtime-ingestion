@@ -1,5 +1,3 @@
-variable "network_name" { type = string }
-
 terraform {
   required_providers {
     docker = {
