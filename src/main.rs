@@ -39,6 +39,8 @@ async fn main() {
 
         let payload = serde_json::to_string(&event).unwrap();
 
+        println!("{}", payload);
+
         // Async publish to Kafka
         // Key Partitioning (using user_id as the key) guarantees all events for a specific user
         // land on the same partition, maintaining chronological order
