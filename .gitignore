@@ -1,7 +1,8 @@
-/target
+# Don't upload compiled packages
+target/
 
-# Don't upload tfstate to github
-*.tfstate
+.terraform/
+*.tfstate*
 *.backup
 
 # Ignore metals
