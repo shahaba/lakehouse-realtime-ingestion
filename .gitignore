@@ -1,3 +1,12 @@
 /target
+
+# Don't upload tfstate to github
 *.tfstate
 *.backup
+
+# Ignore metals
+metals.*
+.metals/*
+
+# Ignore vscode files
+.vscode/*
