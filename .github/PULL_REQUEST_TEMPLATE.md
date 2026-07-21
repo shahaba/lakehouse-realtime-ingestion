@@ -2,6 +2,7 @@
 <!-- Provide a clear and concise description of the changes introduced in this PR. Explain the context and why these changes are needed. -->
 
 ## 🛠️ Type of Change
+
 - [ ] 🚀 New Feature (non-breaking change adding new functionality)
 - [ ] 🐛 Bug Fix (non-breaking change fixing an issue)
 - [ ] 🏗️ Infrastructure / IaC (Terraform, Docker, environment config)
@@ -10,7 +11,8 @@
 - [ ] 📚 Documentation Update
 - [ ] 🚨 Breaking Change (fix or feature that would cause existing functionality to not work as expected)
 
-## 🧩 Component(s) Affected
+## Component(s) Affected
+
 - [ ] Ingestion / Producer (Python, Rust, Ruby)
 - [ ] Message Broker (Kafka / Zookeeper)
 - [ ] Stream Processing (Apache Flink / Spark Streaming)
@@ -19,10 +21,11 @@
 - [ ] Infrastructure (Terraform / Docker Compose)
 - [ ] CI/CD & Testing
 
-## 🧪 Verification & Testing
+## Verification & Testing
 <!-- Describe the tests you ran to verify your changes. Include steps to reproduce, sample command executions, SQL query output, or Terraform plan/apply logs. -->
 
 ### Test Checklist
+
 - [ ] `terraform validate` & `terraform plan` executed cleanly (if applicable)
 - [ ] End-to-end data pipeline flow verified (Producer -> Broker -> Processing -> Storage -> Query Engine)
 - [ ] Event deduplication / windowing verified with test event payloads
@@ -32,7 +35,8 @@
 -- Paste sample Trino query or verification log here if applicable
 ```
 
-## 📋 Pre-Merge Checklist
+## Pre-Merge Checklist
+
 - [ ] Code follows project style and naming conventions
 - [ ] Self-review performed on all modified files
 - [ ] Relevant documentation/README updated

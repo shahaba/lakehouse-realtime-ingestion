@@ -16,7 +16,9 @@ resource "docker_container" "trino" {
     external = 8080
   }
 
-  # Trino configurations would be mounted here via files using 
-  # the 'upload' block or host volume mounts to dynamically inject 
-  # catalog configuration properties pointing to var.kafka_broker_internal
+  volumes {
+    host_path      = abspath("${path.root}/../trino/etc/catalog")
+    container_path = "/etc/trino/catalog"
+  }
 }
+

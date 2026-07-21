@@ -6,6 +6,10 @@ terraform {
   }
 }
 
+resource "docker_volume" "kafka_data" {
+  name = "kafka_data_volume"
+}
+
 resource "docker_container" "kafka" {
   name  = "local-kafka"
   image = "apache/kafka:4.3.1"
@@ -31,6 +35,11 @@ resource "docker_container" "kafka" {
     "KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=1",
     "KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1"
   ]
+
+  volumes {
+    volume_name    = docker_volume.kafka_data.name
+    container_path = "/tmp/kraft-combined-logs"
+  }
 }
 
 resource "docker_container" "kafka_ui" {

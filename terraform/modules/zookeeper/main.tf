@@ -13,7 +13,7 @@ resource "docker_image" "zookeeper_image" {
 
 resource "docker_container" "zookeeper" {
   name    = "local_zookeeper"
-  image   = docker_image.zookeeper_image
+  image   = docker_image.zookeeper_image.image_id
   restart = "always"
 
   networks_advanced {
@@ -28,7 +28,7 @@ resource "docker_container" "zookeeper" {
 
   # Environment variables for config
   env = [
-    "ZOO_MU_ID=1"
+    "ZOO_MY_ID=1",
     "ZOO_PORT=2181"
   ]
 }
