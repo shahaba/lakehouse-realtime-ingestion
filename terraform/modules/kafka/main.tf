@@ -32,3 +32,23 @@ resource "docker_container" "kafka" {
     "KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=1"
   ]
 }
+
+resource "docker_container" "kafka_ui" {
+  name  = "kafka-ui"
+  image = "ghcr.io/kafbat/kafka-ui:latest"
+  networks_advanced {
+    name = var.network_name
+  }
+
+  ports {
+    internal = 8080
+    external = 8082
+  }
+
+  env = [
+    "KAFKA_CLUSTERS_0_NAME=local-cluster",
+    "KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=local-kafka:29092"
+  ]
+
+  depends_on = [docker_container.kafka]
+}
