@@ -45,7 +45,7 @@ async fn main() {
         // Key Partitioning (using user_id as the key) guarantees all events for a specific user
         // land on the same partition, maintaining chronological order
         let _ = producer.send(
-            FutureRecord::to("cliclstrea-events")
+            FutureRecord::to("clickstream-events")
                 .payload(&payload)
                 .key(&event.user_id),
             Duration::from_secs(0),
