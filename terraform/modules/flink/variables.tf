@@ -5,5 +5,5 @@ variable "network_name" {
 
 variable "flink_version" {
   type    = string
-  default = "1.19.0-scala_2.12" # Adjust version based on your production target
+  default = "2.3-java21" # Adjust version based on your production target
 }
