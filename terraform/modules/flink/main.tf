@@ -7,10 +7,13 @@ terraform {
 }
 
 
-# Pull the official Flink image
+# Build the custom Flink image containing the S3 plugin
 resource "docker_image" "flink" {
-  name         = "flink:${var.flink_version}"
-  keep_locally = true
+  name = "custom-flink-s3:latest"
+  build {
+    context    = path.module
+    dockerfile = "Dockerfile"
+  }
 }
 
 # 1. JobManager Container (Master node)
@@ -38,6 +41,11 @@ resource "docker_container" "jobmanager" {
   env = [
     "FLINK_PROPERTIES=jobmanager.rpc.address: local-flink-jobmanager"
   ]
+
+  volumes {
+    host_path      = abspath("${path.root}/../flink-processor/target")
+    container_path = "/tmp/target"
+  }
 }
 
 # 2. TaskManager Container (Worker node)
@@ -55,6 +63,12 @@ resource "docker_container" "taskmanager" {
     # Point the worker directly to the master node container name
     "FLINK_PROPERTIES=jobmanager.rpc.address: local-flink-jobmanager"
   ]
+
+  # Mount target folder directly
+  volumes {
+    host_path      = abspath("${path.root}/../flink-processor/target")
+    container_path = "/tmp/target"
+  }
 
   # Explicit lifecycle rule: ensures the master is live before worker starts up
   depends_on = [

@@ -18,6 +18,7 @@ resource "docker_container" "kafka" {
     internal = 9092
     external = 9092
   }
+  user = "root"
 
   env = [
     "KAFKA_NODE_ID=1",

@@ -34,3 +34,17 @@ resource "docker_container" "minio" {
     container_path = "/data"
   }
 }
+
+# Short Lived container to auto provision Lakehouse bucket
+resource "docker_container" "minio_mc" {
+  name       = "local-minio-mc"
+  image      = "minio/mc:latest"
+  entrypoint = ["/bin/sh", "-c"]
+  command    = ["until mc alias set myminio http://local-minio:9000 admin supersecret; do echo 'Waiting for MinIO...'; sleep 1; done && mc mb --ignore-existing myminio/lakehouse"]
+
+  networks_advanced {
+    name = var.network_name
+  }
+
+  depends_on = [docker_container.minio]
+}

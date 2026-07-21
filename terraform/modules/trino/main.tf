@@ -13,7 +13,7 @@ resource "docker_container" "trino" {
   networks_advanced { name = var.network_name }
   ports {
     internal = 8080
-    external = 8080
+    external = 8083
   }
 
   volumes {
